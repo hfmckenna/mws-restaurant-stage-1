@@ -1,0 +1,15 @@
+/* CSS adjustments for phone & tablets */
+
+@media screen and (max-width: 480px) {
+    #restaurants-list li {
+        width: 90%;
+    }
+}
+
+/* CSS Adjustments for desktop */
+
+@media screen and (min-width: 481px) {
+    #restaurants-list li {
+        width: 27%;
+    }
+}
