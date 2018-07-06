@@ -1,15 +1,105 @@
 /* CSS adjustments for phone & tablets */
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
     #restaurants-list li {
         width: 90%;
+    }
+    /* ====================== Restaurant Details ====================== */
+    nav h1 {
+        top: 10%;
+    }
+    #breadcrumb {
+        width: 100%;
+    }
+    .inside #map-container {
+        height: 40vh;
+        position: sticky;
+        width: 100%;
+        top: 131px;
+    }
+    .inside #footer {
+        width: 100%;
+    }
+    #restaurant-address {
+        margin: auto;
+    }
+    #restaurant-container {
+        padding: 140px 40px 30px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    #reviews-container {
+        width: 95%;
+        margin: 0 auto;
+    }
+    #reviews-list li {
+        width: 100%;
+    }
+    #reviews-list li p {
+        padding: 5px;
+    }
+    #restaurant-hours {
+        width: 100%;
+    }
+    #restaurant-hours td {
+        font-size: 12pt;
     }
 }
 
 /* CSS Adjustments for desktop */
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 769px) {
     #restaurants-list li {
         width: 27%;
+    }
+    /* ====================== Restaurant Details ====================== */
+    nav h1 {
+        top: 30%;
+    }
+    .inside #map-container {
+        height: 100%;
+        position: fixed;
+        right: 0;
+        width: 50%;
+    }
+    .inside #footer {
+        width: 50%;
+    }
+    #restaurant-name {
+        margin: 15px 0 30px;
+    }
+    #restaurant-address {
+        font-size: 12pt;
+    }
+    #restaurant-cuisine {
+        width: 100%;
+    }
+    #restaurant-container {
+        text-align: center;
+        width: 50%;
+        margin-top: 131px;
+    }
+    #reviews-container {
+        padding: 30px 40px 80px;
+        width: 50%;
+    }
+    #reviews-list {
+        margin: 0;
+    }
+    #reviews-list li {
+        display: block;
+        list-style-type: none;
+        overflow: hidden;
+        position: relative;
+        width: 85%;
+    }
+    #reviews-list li p {
+        margin: 0 0 10px;
+    }
+    #restaurant-hours {
+        width: 100%;
+    }
+    #restaurant-hours td {
+        color: #666;
     }
 }
