@@ -1,6 +1,20 @@
 /* CSS adjustments for phone & tablets */
 
 @media screen and (max-width: 768px) {
+    /* ====================== Restaurant Filtering ====================== */
+    .filter-options {
+        flex-direction: column;
+    }
+    .filter-options label {
+        font-size: 12pt;
+        width: 100%;
+    }
+    .filter-options select {
+        height: 32px;
+        width: 100%;
+        padding-left: 5px;
+    }
+    /* ====================== Restaurant Listing ====================== */
     #restaurants-list li {
         width: 90%;
     }
@@ -39,7 +53,14 @@
         padding: 5px;
     }
     #restaurant-hours {
-        width: 100%;
+        width: 90%;
+        text-align: left;
+        margin: 16px auto auto;
+        padding-top: 16px;
+    }
+    #restaurant-hours caption {
+        text-align: left;
+        font-size: 14pt;
     }
     #restaurant-hours td {
         font-size: 12pt;
@@ -49,6 +70,20 @@
 /* CSS Adjustments for desktop */
 
 @media screen and (min-width: 769px) {
+    /* ====================== Restaurant Filtering ====================== */
+    .filter-options {
+        flex-direction: row;
+    }
+    .filter-options label {
+        font-size: 12pt;
+        width: 15%;
+    }
+    .filter-options select {
+        height: 36px;
+        width: 35%;
+        padding-left: 5px;
+    }
+    /* ====================== Restaurant Listing ====================== */
     #restaurants-list li {
         width: 27%;
     }
@@ -97,7 +132,13 @@
         margin: 0 0 10px;
     }
     #restaurant-hours {
-        width: 100%;
+        width: 50%;
+        text-align: left;
+        margin: auto;
+    }
+    #restaurant-hours caption {
+        text-align: left;
+        font-size: 12pt;
     }
     #restaurant-hours td {
         color: #666;

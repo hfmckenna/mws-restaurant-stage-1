@@ -6,6 +6,7 @@ var newMap;
  */
 document.addEventListener('DOMContentLoaded', (event) => {  
   initMap();
+  focusZoomForA11y();
 });
 
 /**
@@ -24,9 +25,9 @@ initMap = () => {
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
         mapboxToken: config.MAPBOX_API,
         maxZoom: 18,
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-          '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-          'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/" tabindex="-1">OpenStreetMap</a> contributors, ' +
+          '<a href="https://creativecommons.org/licenses/by-sa/2.0/" tabindex="-1">CC-BY-SA</a>, ' +
+          'Imagery © <a href="https://www.mapbox.com/" tabindex="-1">Mapbox</a>',
         id: 'mapbox.streets'    
       }).addTo(newMap);
       fillBreadcrumb();
@@ -151,6 +152,8 @@ createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
   name.innerHTML = review.name;
+  li.setAttribute('aria-label',`review`);
+  li.setAttribute('aria-describedby',`${review.name} ${review.date}`);
   li.appendChild(name);
 
   const date = document.createElement('p');
@@ -163,6 +166,7 @@ createReviewHTML = (review) => {
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
+  comments.id = `${review.name} ${review.date}`;
   li.appendChild(comments);
 
   return li;
@@ -192,4 +196,15 @@ getParameterByName = (name, url) => {
   if (!results[2])
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+/**
+ * Zoom controls important for many a11y users
+ */
+
+focusZoomForA11y = () => {
+  const zoomIn = document.getElementsByClassName('leaflet-control-zoom-in');
+  const zoomOut = document.getElementsByClassName('leaflet-control-zoom-out');
+  zoomIn[0].setAttribute('tabindex', 1);
+  zoomOut[0].setAttribute('tabindex', 1);  
 }

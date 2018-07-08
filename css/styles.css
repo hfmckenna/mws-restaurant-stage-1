@@ -26,14 +26,18 @@ a {
 	color: orange;
 	text-decoration: none;
 }
-a:hover, a:focus {
-	color: #3397db;
+a:focus, select:focus {
+  outline: solid 3px #3397db;
+  outline-offset: -3px;
+}
+a:hover {
+  color: #3397db;
 	text-decoration: none;
 }
 a img{
 	border: none 0px #fff;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, label {
   font-family: 'Averia Serif Libre', cursive;
 }
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -94,7 +98,6 @@ nav h1 a {
     color: #0275d8;
     text-decoration: none;
 }
-
 /* Add a color on mouse-over */
 #breadcrumb li a:hover {
     color: #01447e;
@@ -110,23 +113,18 @@ nav h1 a {
 .filter-options {
   width: 100%;
   background-color: #3397DB;
-  flex-direction: column;
   display: flex;
 }
-.filter-options h2 {
+.filter-options label {
   color: white;
-  font-size: 1rem;
   font-weight: normal;
-  margin: 10px;
+  margin: 6px;
 }
 .filter-options select {
   background-color: white;
   border: 1px solid #ccc;
   font-family: 'Song Myung', 'Times New Roman', Times, serif;
   font-size: 10pt;
-  height: 32px;
-  width: 100%;
-  padding-left: 10px;
 }
 
 /* ====================== Restaurant Listing ====================== */
@@ -195,14 +193,15 @@ nav h1 {
 .inside header {
   position: fixed;
   top: 0;
-  z-index: 1000;
   margin: 0;
+  z-index: 1;
   padding: 0;
   width: 100%;
 }
 .inside #map-container {
   background: blue none repeat scroll 0 0;
   top: 80px;
+  z-index: 2;
 }
 .inside #map {
   background-color: #ccc;

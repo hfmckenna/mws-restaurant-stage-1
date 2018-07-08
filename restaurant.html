@@ -15,8 +15,9 @@
   <!-- Beginning header -->
   <header>
     <!-- Beginning nav -->
+    <!-- Already has a home link from the breadcrumb which is better suited for a11y navigation -->
     <nav>
-      <h1><a href="/">Restaurant Reviews</a></h1>
+      <h1><a href="/" tabindex="-1">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
     <ul id="breadcrumb" >
@@ -38,9 +39,11 @@
     <section id="restaurant-container">
       <h1 id="restaurant-name"></h1>
       <img id="restaurant-img">
-      <p id="restaurant-cuisine"></p>
-      <p id="restaurant-address"></p>
-      <table id="restaurant-hours"></table>
+      <p aria-label="cuisine" id="restaurant-cuisine"></p>
+      <p aria-label="address" id="restaurant-address"></p>
+      <table id="restaurant-hours">
+        <caption>Restaurant Hours</caption>
+      </table>
     </section>
     <!-- end restaurant -->
     <!-- Beginning reviews -->
@@ -53,7 +56,7 @@
 
   <!-- Beginning footer -->
   <footer id="footer">
-    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+    Copyright (c) 2017 <a href="/" tabindex="-1"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
   <!-- End footer -->
   <script type="text/javascript" src="js/config.js"></script>
