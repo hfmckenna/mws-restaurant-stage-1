@@ -27,7 +27,7 @@ a {
 	text-decoration: none;
 }
 a:focus, select:focus {
-  outline: solid 3px #3397db;
+  outline: solid 3px #444;
   outline-offset: -3px;
 }
 a:hover {
@@ -158,7 +158,7 @@ nav h1 a {
   object-fit: contain;
 }
 #restaurants-list li h1 {
-  color: #f18200;
+  color: #252831;
   font-family: 'Song Myung', 'Times New Roman', Times, serif;
   font-size: 14pt;
   font-weight: 200;
@@ -175,7 +175,7 @@ nav h1 a {
   font-size: 11pt;
 }
 #restaurants-list li a {
-  background-color: orange;
+  background-color: #252831;
   border-bottom: 3px solid #eee;
   color: #fff;
   font-size: 10pt;

@@ -6,7 +6,6 @@ var newMap;
  */
 document.addEventListener('DOMContentLoaded', (event) => {  
   initMap();
-  focusZoomForA11y();
 });
 
 /**
@@ -32,6 +31,7 @@ initMap = () => {
       }).addTo(newMap);
       fillBreadcrumb();
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
+      focusZoomForA11y();
     }
   });
 }  
