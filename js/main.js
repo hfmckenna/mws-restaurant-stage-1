@@ -165,7 +165,6 @@ createRestaurantHTML = (restaurant) => {
 
   const name = document.createElement('h1');
   name.innerHTML = restaurant.name;
-  name.id = `${restaurant.id} ${restaurant.name}`;
   li.append(name);
 
   const neighborhood = document.createElement('p');
@@ -180,7 +179,7 @@ createRestaurantHTML = (restaurant) => {
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
   //Added ID to cover cases where the restaurant may have another branch using the same name
-  more.setAttribute('aria-labelledby',`${restaurant.id} ${restaurant.name}`);
+  more.setAttribute('aria-label', restaurant.name);
   li.append(more)
 
   return li
