@@ -31,7 +31,6 @@ initMap = () => {
       }).addTo(newMap);
       fillBreadcrumb();
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
-      focusZoomForA11y();
     }
   });
 }  
@@ -101,6 +100,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   }
   // fill reviews
   fillReviewsHTML();
+  createMetaDescription(`Reviews for ${restaurant.name}, ${restaurant.cuisine_type} restaurant.`);
 }
 
 /**
@@ -198,13 +198,9 @@ getParameterByName = (name, url) => {
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-/**
- * Zoom controls important for many a11y users
- */
-
-focusZoomForA11y = () => {
-  const zoomIn = document.getElementsByClassName('leaflet-control-zoom-in');
-  const zoomOut = document.getElementsByClassName('leaflet-control-zoom-out');
-  zoomIn[0].setAttribute('tabindex', 1);
-  zoomOut[0].setAttribute('tabindex', 1);  
+//Basic SEO to help reviews rank on search engines
+createMetaDescription = (constructedMetaFromDb) => {
+  const meta = document.createElement('meta');
+  meta.setAttribute('description', constructedMetaFromDb);
+  document.getElementsByTagName('head')[0].appendChild( meta );
 }

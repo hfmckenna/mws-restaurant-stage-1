@@ -1,31 +1,35 @@
-var CACHE_NAME = 'my-site-cache-v1';
+var CACHE_NAME = 'site-cache';
 var urlsToCache = [
   '/',
-  '/css/',
-  '/js/'
+  '/404.html'
 ];
+
+// Below is largely a hybrid of https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker 
+// and Jake Archibalds guide. Little point reinventing the wheel for Service Workers.
 
 self.addEventListener('install', function(event) {
     // Perform install steps
     event.waitUntil(
       caches.open(CACHE_NAME)
         .then(function(cache) {
-          console.log('Opened cache');
           return cache.addAll(urlsToCache);
         })
     );
   });
 
-  self.addEventListener('fetch', function(event) {
-    event.respondWith(
-      caches.match(event.request)
-        .then(function(response) {
-          // Cache hit - return response
-          if (response) {
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+        return response || fetch(event.request).then(function(response) {
+          return caches.open(CACHE_NAME).then(function(cache) {
+            cache.put(event.request, response.clone());
             return response;
-          }
-          return fetch(event.request);
-        }
-      )
-    );
-  });
+          });  
+        });
+    }).catch(function(error) {
+      if (event.request.mode === 'navigate') {
+        return caches.match('/404.html');
+      }
+    })
+  );
+});

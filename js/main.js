@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   initMap(); // added 
   fetchNeighborhoods();
   fetchCuisines();
-  focusZoomForA11y();
 });
 
 /**
@@ -86,7 +85,6 @@ initMap = () => {
       'Imagery © <a href="https://www.mapbox.com/" tabindex="-1">Mapbox</a>',
     id: 'mapbox.streets'
   }).addTo(newMap);
-
   updateRestaurants();
 }
 /* window.initMap = () => {
@@ -183,7 +181,6 @@ createRestaurantHTML = (restaurant) => {
   more.href = DBHelper.urlForRestaurant(restaurant);
   //Added ID to cover cases where the restaurant may have another branch using the same name
   more.setAttribute('aria-labelledby',`${restaurant.id} ${restaurant.name}`);
-  more.setAttribute('tabindex', 1);
   li.append(more)
 
   return li
@@ -214,14 +211,3 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
-
-/**
- * Zoom controls important for many a11y users
- */
-
-focusZoomForA11y = () => {
-  const zoomIn = document.getElementsByClassName('leaflet-control-zoom-in');
-  const zoomOut = document.getElementsByClassName('leaflet-control-zoom-out');
-  zoomIn[0].setAttribute('tabindex', 1);
-  zoomOut[0].setAttribute('tabindex', 1);  
-}
